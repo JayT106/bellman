@@ -1809,6 +1809,8 @@ impl_assembly!{
             let total_number_of_table_entries = self.num_table_lookups + self.total_length_of_all_tables;
             let new_size_candidates = [(self.n() + 1).next_power_of_two() - 1, (total_number_of_table_entries + 1).next_power_of_two() - 1];
 
+            println!("num_table_lookups {}, total_length_of_all_tables {}, n {}", self.num_table_lookups, self.total_length_of_all_tables, self.n());
+
             let new_size = *new_size_candidates.iter().max().unwrap();
             assert!(
                 new_size <= 1usize << E::Fr::S, 
